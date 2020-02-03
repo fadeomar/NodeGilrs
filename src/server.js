@@ -8,6 +8,8 @@ const message = "I am so happy to be part of the Node Girls workshop";
 const route = (request, response) => {
   const endpoint = request.url;
   console.log(endpoint);
+  const method = request.method;
+  console.log(method);
   response.writeHead(200, { "Content-Type": "text/html" });
   response.write(message); //response body
   response.end(); // finish response
