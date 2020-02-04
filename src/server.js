@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const querystring = require("querystring");
 
 //  HTTP module is a core module and it is useful to transfer the data over HTTP
 // The HTTP module can create an HTTP server that listens to server ports and gives a response back to the client.
@@ -51,7 +52,8 @@ const route = (request, response) => {
     });
 
     request.on("end", () => {
-      console.log(allTheData);
+      const convertedData = querystring.parse(allTheData);
+      console.log(convertedData);
       response.end();
     });
   } else if (endpoint === "/girl") {
