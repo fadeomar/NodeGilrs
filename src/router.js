@@ -32,8 +32,8 @@ const route = (request, response) => {
       if (err) {
         console.log(err);
       } else {
-        res.writeHead(200, { "Content-Type": mimeType[ext] });
-        res.end(file);
+        response.writeHead(200, { "Content-Type": mimeType[ext] });
+        response.end(file);
       }
     });
   }
