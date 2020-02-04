@@ -10,9 +10,19 @@ const route = (request, response) => {
   console.log(endpoint);
   const method = request.method;
   console.log(method);
-  response.writeHead(200, { "Content-Type": "text/html" });
-  response.write(message); //response body
-  response.end(); // finish response
+  if (endpoint === "/") {
+    response.writeHead(200, { "Content-Type": "text/html" });
+    response.write(message); //response body
+    response.end(); // finish response
+  } else if (endpoint === "/boy") {
+    response.writeHead(200, { "Contnet-Type": "text/html" });
+    response.write("Hi boy"); //response body
+    response.end(); // finish response
+  } else if (endpoint === "/girl") {
+    response.writeHead(200, { "Contnet-Type": "text/html" });
+    response.write("Hi girl"); //response body
+    response.end(); // finish response
+  }
 };
 
 const server = http.createServer(route);
