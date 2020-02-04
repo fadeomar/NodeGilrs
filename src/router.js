@@ -1,3 +1,7 @@
+const fs = require("fs");
+const path = require("path");
+const querystring = require("querystring");
+
 const route = (request, response) => {
   const endpoint = request.url;
   console.log(endpoint);
@@ -53,3 +57,5 @@ const route = (request, response) => {
     response.end(); // finish response
   }
 };
+
+module.exports = route;

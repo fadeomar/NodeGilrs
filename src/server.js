@@ -1,8 +1,10 @@
+// build in modules
 const http = require("http");
-const fs = require("fs");
-const path = require("path");
-const querystring = require("querystring");
 
+// my modules
+const route = require("./router");
+
+console.log(route);
 //  HTTP module is a core module and it is useful to transfer the data over HTTP
 // The HTTP module can create an HTTP server that listens to server ports and gives a response back to the client.
 const port = 5000;
