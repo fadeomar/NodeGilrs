@@ -44,6 +44,16 @@ const route = (request, response) => {
         response.end(file);
       }
     });
+  } else if (endpoint === "/create-post") {
+    let allTheData = "";
+    request.on("data", chunkOfData => {
+      allTheData += chunkOfData;
+    });
+
+    request.on("end", () => {
+      console.log(allTheData);
+      response.end();
+    });
   } else if (endpoint === "/girl") {
     response.writeHead(200, { "Contnet-Type": "text/html" });
     response.write("Hi girl"); //response body
