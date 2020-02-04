@@ -46,6 +46,30 @@ const route = (request, response) => {
         response.end(file);
       }
     });
+  } else if (endpoint === "/create-post") {
+    let chunks = "";
+    request.on("data", chunk => {
+      chunks += chunk;
+    });
+
+    request.on("end", () => {
+      data = querystring.parse(chunks);
+      const jsonPath = path.join(__dirname, "posts.json");
+      fs.readFile(jsonPath, (err, file) => {
+        if (err) {
+          console.log(err);
+        } else {
+          const posts = JSON.parse(file);
+          const newPost = data;
+          posts[Date.now()] = newPost.post;
+          fs.writeFile(jsonPath, JSON.stringify(posts), err => {
+            if (err) console.log(err);
+          });
+        }
+      });
+      response.writeHead(302, { Location: "/" });
+      response.end();
+    });
   }
 };
 
