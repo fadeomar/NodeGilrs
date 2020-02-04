@@ -36,6 +36,16 @@ const route = (request, response) => {
         response.end(file);
       }
     });
+  } else if (endpoint === "/posts") {
+    filePath = path.join(__dirname, "posts.json");
+    fs.readFile(filePath, (err, file) => {
+      if (err) {
+        console.log(err);
+      } else {
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(file);
+      }
+    });
   }
 };
 
