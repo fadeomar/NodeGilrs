@@ -54,6 +54,7 @@ const route = (request, response) => {
     request.on("end", () => {
       const convertedData = querystring.parse(allTheData);
       console.log(convertedData);
+      response.writeHead(302, { Location: "/" });
       response.end();
     });
   } else if (endpoint === "/girl") {
